@@ -6,5 +6,6 @@ s = socket.socket(
 )
 s.connect((socket.gethostname(), 16548))
 
-msg = s.recv(1024).decode("utf-8")
-print(msg)
+while True:
+    msg = s.recv(8).decode("utf-8")
+    print(msg)
