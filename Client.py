@@ -6,6 +6,12 @@ s = socket.socket(
 )
 s.connect((socket.gethostname(), 16548))
 
+fullMsg = ""
 while True:
     msg = s.recv(8).decode("utf-8")
-    print(msg)
+    if len(msg) != 0:
+        fullMsg += msg
+    else:
+        break
+
+print(fullMsg)

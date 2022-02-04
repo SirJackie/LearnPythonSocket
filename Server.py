@@ -11,3 +11,4 @@ while True:
     clientSocket, address = s.accept()
     print("Connection from " + address[0] + ":" + str(address[1]) + " has been established!")
     clientSocket.send("Welcome to the server!".encode("utf-8"))
+    clientSocket.close()
