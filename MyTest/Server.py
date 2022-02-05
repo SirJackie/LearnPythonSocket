@@ -19,9 +19,10 @@ while True:
     clientSocket, address = s.accept()
     print(f"Client Accepted: {address}")
     while True:
-        SafeSendMessage(clientSocket, "Hello World!")
         msg = SafeRecvMessage(clientSocket)
-        if msg == "close socket please":
+        if msg == "get message please":
+            SafeSendMessage(clientSocket, "Hello World!")
+        elif msg == "close socket please":
             break
 
     clientSocket.close()

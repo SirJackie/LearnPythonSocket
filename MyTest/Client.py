@@ -14,12 +14,9 @@ def SafeRecvMessage(s):
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect(("127.0.0.1", 1234))
 
-while True:
-    for i in range(0, 10):
-        msg = SafeRecvMessage(s)
-        print(msg)
-        SafeSendMessage(s, "continue")
+for i in range(0, 10):
+    SafeSendMessage(s, "get message please")
+    msg = SafeRecvMessage(s)
+    print(msg)
 
-    SafeSendMessage(s, "close socket please")
-    a = 1
-    b = 2
+SafeSendMessage(s, "close socket please")
