@@ -50,13 +50,13 @@ while True:
             message = ReceiveMessage(notifiedSocket)
 
             if message is False:
-                print(f"Closed connection from{clients[notifiedSocket]['data'].decode('utf-8')}")
+                print(f"Closed connection from {clients[notifiedSocket]['data'].decode('utf-8')}")
                 socketList.remove(notifiedSocket)
                 del clients[notifiedSocket]
                 continue
 
             user = clients[notifiedSocket]
-            print(f"Received message from{user['data'].decode('utf-8')}: {message['data'].decode('utf-8')}")
+            print(f"Received message from {user['data'].decode('utf-8')}: {message['data'].decode('utf-8')}")
 
             for clientSocket in clients:
                 if clientSocket != notifiedSocket:
