@@ -1,5 +1,7 @@
 import socket
 
+HEADER_SIZE = 10
+
 s = socket.socket(
     socket.AF_INET,     # IPv4
     socket.SOCK_STREAM  # TCP
@@ -10,5 +12,8 @@ s.listen(5)             # Max connections: 5
 while True:
     clientSocket, address = s.accept()
     print("Connection from " + address[0] + ":" + str(address[1]) + " has been established!")
-    clientSocket.send("Welcome to the server!".encode("utf-8"))
-    clientSocket.close()
+
+    msg = "Welcome to the server!"
+    sendingMsg = f"{len(msg):<{HEADER_SIZE}}" + msg
+
+    clientSocket.send(sendingMsg.encode("utf-8"))
